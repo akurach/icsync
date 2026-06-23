@@ -1,5 +1,10 @@
 # icsync
 
+[![PyPI](https://img.shields.io/pypi/v/icsync.svg)](https://pypi.org/project/icsync/)
+[![Python](https://img.shields.io/pypi/pyversions/icsync.svg)](https://pypi.org/project/icsync/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://github.com/akurach/icsync/actions/workflows/release.yml/badge.svg)](https://github.com/akurach/icsync/actions/workflows/release.yml)
+
 Sync **Android camera photos & videos into your iCloud Photo Library** — as
 full-resolution originals, in the real Photos app, not some third-party gallery.
 
@@ -20,11 +25,25 @@ a `launchd` agent. The Android→Mac transport is off-the-shelf
 
 ## Install
 
+Needs [pipx](https://pipx.pypa.io/) (`brew install pipx`). Install the CLI — it
+pulls in `osxphotos` automatically:
+
 ```bash
-pipx install icsync      # pulls in osxphotos automatically
-icsync install           # creates dirs + loads the LaunchAgent (runs every 60s)
-icsync doctor            # check prerequisites
+pipx install icsync
 ```
+
+> No pipx? `python3 -m pip install --user icsync` works too.
+
+Then set up the bridge in order:
+
+```bash
+icsync doctor     # 1. check osxphotos + reminders (do prerequisites below first)
+icsync install    # 2. create dirs + load the LaunchAgent (runs every 60s)
+icsync status     # 3. confirm it's loaded and watching the inbox
+```
+
+Run `icsync install` **after** the prerequisites below — the agent imports into
+Photos and needs iCloud Photos on plus the one-time macOS permission grants.
 
 From source:
 
