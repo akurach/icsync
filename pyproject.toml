@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "icsync"
-version = "0.1.0"
+version = "0.1.1"
 description = "Bridge Android camera media into the macOS / iCloud Photos library via an always-on Mac."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Alexander Kurach" }]
 keywords = ["icloud", "photos", "android", "sync", "osxphotos", "macos"]
